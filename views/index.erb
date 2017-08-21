@@ -72,6 +72,7 @@
 											<div class="btn-group" role="group" aria-label="First group">
 												<!--<button type="button" class="btn btn-success btn-sm">Realizada</button>-->
 												<a href="/done/<%= tarea["id"] %>"><div class="btn btn-success btn-sm">Realizada</div></a>
+												<a href="/delete/<%= tarea["id"] %>"><div class="btn btn-danger btn-sm">Eliminar</div></a>
 											</div>
 										</td>
 									</tr>
@@ -84,7 +85,3 @@
 		</div>
 	<% end %>
 </section>
-
-<div>
-	<%= @tareas %>
-</div>
