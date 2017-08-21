@@ -1,0 +1,37 @@
+body {
+	background-color: #f5f5f2;
+	box-sizing: border-box;
+}
+
+#tabs, table {
+	margin-top: 20px;
+}
+
+#tabs a {
+	text-decoration: none;
+}
+
+#tabs a:hover {
+	background-color: #dddddd;
+}
+
+#myTab li {
+	padding: 0px;
+	text-align: center;
+}
+
+#myTabContent {
+	background-color: #ffffff;
+	border: 1px solid transparent;
+	border-color: #fff #ddd #ddd;
+	border-style: solid;
+	border-radius: 3px;
+}
+
+#id {
+	width: 7%;
+}
+
+#new_task {
+	margin-top: 10px;
+}

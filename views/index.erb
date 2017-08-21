@@ -1,0 +1,90 @@
+</br>
+<section id="new_task">
+	<div class="container mt-2">
+		<h1>Nueva tarea</h1>
+		<form class="form-inline" action="/" method="post">
+			<input class="col form-control mr-sm-2" type="text" placeholder="Escribe nueva tarea" aria-label="Search" name="title">
+			<button class="btn btn-success my-2 my-sm-0" type="submit">Crear</button>
+		</form>
+	</div>
+</section>
+
+<section id="all_tasks">
+	<% if @tareas.empty? %>
+		</br>
+		<div class="container alert alert-primary text-center">
+			No se tiene ninguna tarea
+		</div>
+	<% else %>
+		<div class="container" id="tabs">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item col-6">
+					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#pendientes" role="tab" aria-controls="home" aria-expanded="true">Pendientes</a>
+				</li>
+				<li class="nav-item col-6">
+					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#realizadas" role="tab" aria-controls="profile">Realizadas</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="pendientes" role="tabpanel" aria-labelledby="home-tab">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th id="id">#</th>
+								<th>Tarea</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @tareas.each do |tarea| %>
+								<% if tarea["done"] == false %>
+									<tr>
+										<th id="id"><%= tarea["id"] %></th>
+										<td class="btn-toolbar justify-content-between">
+											<div><%= tarea["title"] %></div>
+											<div class="btn-group" role="group" aria-label="First group">
+												<!--<button type="submit" class="btn btn-primary btn-sm" formmethod="post" formaction="/completar">Pendiente</button>
+												<button type="button" class="btn btn-danger btn-sm">Eliminar</button>-->
+												<a href="/done/<%= tarea["id"] %>"><div class="btn btn-primary btn-sm">Pendiente</div></a>
+												<a href="/delete/<%= tarea["id"] %>"><div class="btn btn-danger btn-sm">Eliminar</div></a>
+											</div>
+										</td>
+									</tr>
+								<% end %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="realizadas" role="tabpanel" aria-labelledby="profile-tab">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th id="id">#</th>
+								<th>Tarea</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @tareas.each do |tarea| %>
+								<% if tarea["done"] == true %>
+									<tr>
+										<th id="id"><%= tarea["id"] %></th>
+										<td class="btn-toolbar justify-content-between">
+											<div><%= tarea["title"] %></div>
+											<div class="btn-group" role="group" aria-label="First group">
+												<!--<button type="button" class="btn btn-success btn-sm">Realizada</button>-->
+												<a href="/done/<%= tarea["id"] %>"><div class="btn btn-success btn-sm">Realizada</div></a>
+											</div>
+										</td>
+									</tr>
+								<% end %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</section>
+
+<div>
+	<%= @tareas %>
+</div>
